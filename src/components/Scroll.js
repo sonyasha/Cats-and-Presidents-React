@@ -1,5 +1,5 @@
 import React from 'react';
-import Background from './dark-paths.png';
+import Background from './backgrounds/random_grey_variations.png';
 
 const Scroll = (props) => {
     return (

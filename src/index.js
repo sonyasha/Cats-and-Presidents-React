@@ -9,10 +9,10 @@ import * as serviceWorker from './serviceWorker';
 
 ReactDOM.render(
     <div>
-        <div className='fl w-50 pa2'>
+        <div className='fl w-50-l pa2 w-100-m'>
             <App/>
         </div>
-        <div className='fl w-50 pa2'>
+        <div className='fl w-50-l pa2 w-100-m'>
             <Catsapp/>
         </div>
         
