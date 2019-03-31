@@ -2,19 +2,33 @@ import React from 'react';
 import Background from './backgrounds/fabric_of_squares_gray_@2X.png'
 
 class Profile extends React.Component {
+    
     render() {
-        return (
+        const breed_data = this.props.breed_data;
+        
+        return !breed_data ?
+        (
             <div className='fl w-80 pa2 tc ma2 center br2 bg-light-gray' style={{backgroundImage: `url(${Background})`}}>
-                <img className='br2' src='https://cdn2.thecatapi.com/images/yZE2JpeXz.jpg' alt='a cat'/>
+                <h3>Choose a breed</h3>
+                <img className='br2' src='https://cataas.com/cat?type=md' alt='a kitty'/>
+            </div>
+        ):
+
+        (
+            <div className='fl w-80 pa2 tc ma2 center br2 bg-light-gray' style={{backgroundImage: `url(${Background})`}}>
+                <h3>
+                    {breed_data.breeds[0].name}
+                </h3>
+                <img className='br2'
+                    src={breed_data.url}
+                    alt='a kitty'/>
                 <div>
-                    <h3>
-                        Breed
-                    </h3>
-                    <p>
-                        Description
-                    </p>
+                    <h4>Origin - {`${breed_data.breeds[0].origin}`}</h4>
+                    <h5>Temperament {`${breed_data.breeds[0].temperament}`}</h5>
+                    <p>{breed_data.breeds[0].description}</p>
                 </div>
             </div>
+            
         )
     }
 
