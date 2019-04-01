@@ -55,13 +55,13 @@ class Catsapp extends React.Component {
 
     render() {
         const { breeds, selectedbreed, breed_data } = this.state;
-        console.log(breed_data);
+        // console.log(breed_data);
 
         return !Object.keys(breeds).length ?
             <h1>LOADING</h1> :
             (
                 <div className= 'tc flex flex-column center'>
-                    <h1>
+                    <h1 className='f2'>
                         Cats breeds
                     </h1>
                     <SelectBreed breeds = {breeds} onChange = {this.onSelectChange}/>

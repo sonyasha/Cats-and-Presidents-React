@@ -8,8 +8,8 @@ class SelectBreed extends React.Component {
             <option value={key} key={breeds[key]}>{key}</option>
         )
         return (
-            <div>
-                <select className='' onChange={this.props.onChange}>
+            <div className='pa1'>
+                <select className='bg-washed-blue' onChange={this.props.onChange}>
                     {options}
                 </select>
             </div>
