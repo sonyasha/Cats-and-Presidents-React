@@ -1,10 +1,41 @@
 import React from 'react';
+import Background from './backgrounds/fabric_of_squares_gray_@2X.png'
 
 class Presprofile extends React.Component {
     render() {
-        console.log(this.props);
+        const { firstname, lastname, terms } = this.props;
+        const all_terms = terms.map(el => 
+            <div className='f6' key={el.start}>
+                {el.start} - {el.end}
+            </div>);
+
+        const colors = () => {
+            if (terms[0].party === 'Republican') {
+                return 'b--red';
+            }
+            else if (terms[0].party === 'Democratic' || terms[0].party === 'Democrat') {
+                return 'b--blue';
+            }
+            else if (terms[0].party === 'Whig') {
+                return 'b--yellow';
+            }
+            else {
+                return 'b--black-20';
+            }
+        };
+
         return(
-            <div>Profile</div>
+            <div className={'w-30 tc ma2 br3 pa2 ba bw2 ' +  colors()}
+                style={{backgroundImage: `url(${Background})`}}>
+                <div className='fw6 f5 ma1'>
+                    {`${firstname} ${lastname}`}
+                </div>
+                <div className='ma1'>{terms[0].party}</div>
+                <img src='https://avatars.io/static/default_128.jpg' alt={firstname}/>
+                <div className='mt2'>
+                    {all_terms}
+                </div>
+            </div>
         )
     }
 }

@@ -36,7 +36,8 @@ class Presapp extends React.Component {
     render() {
         const { presidents } = this.state;
         return (
-            <div>
+            <div className= 'tc'>
+                <h1 className='f2'>Presidents</h1>
                 <Preslist presidents = {presidents}/>
             </div>
         )
