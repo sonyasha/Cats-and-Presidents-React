@@ -7,11 +7,12 @@ class Preslist extends React.Component {
         return (
             <div className='flex flex-wrap justify-center'>
                 {this.props.presidents.map(el =>
-                (<Presprofile firstname = {el.firstname}
-                                lastname = {el.lastname}
-                                terms = {el.terms}
-                                key = {el.key}/>)
-                                )}
+                    (<Presprofile firstname = {el.firstname}
+                                    lastname = {el.lastname}
+                                    terms = {el.terms}
+                                    key = {el.key}/>)
+                                    )
+                }
             </div>
         )
     }

@@ -61,7 +61,7 @@ class Catsapp extends React.Component {
             <h1>LOADING</h1> :
             (
                 <div className= 'tc flex flex-column center'>
-                    <h1 className='f2'>
+                    <h1 className='f2 mid-gray'>
                         Cats breeds
                     </h1>
                     <SelectBreed breeds = {breeds} onChange = {this.onSelectChange}/>
