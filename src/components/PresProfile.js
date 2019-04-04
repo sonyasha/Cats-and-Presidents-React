@@ -3,7 +3,8 @@ import Background from './backgrounds/fabric_of_squares_gray_@2X.png'
 
 class Presprofile extends React.Component {
     render() {
-        const { firstname, lastname, terms } = this.props;
+        const { firstname, terms, photo } = this.props;
+        // console.log(photo);
         const all_terms = terms.map(el => 
             <div className='f6' key={el.start}>
                 {el.start} - {el.end}
@@ -28,10 +29,11 @@ class Presprofile extends React.Component {
             <div className={'w-30 tc ma2 br3 pa2 ba bw2 ' +  colors()}
                 style={{backgroundImage: `url(${Background})`}}>
                 <div className='fw6 f5 ma1'>
-                    {`${firstname} ${lastname}`}
+                    {`${firstname}`}
                 </div>
                 <div className='ma1'>{terms[0].party}</div>
-                <img src='https://avatars.io/static/default_128.jpg' alt={firstname}/>
+                {/* <img src='https://avatars.io/static/default_128.jpg' alt={firstname}/> */}
+                <img src={photo} alt={firstname}/>
                 <div className='mt2'>
                     {all_terms}
                 </div>

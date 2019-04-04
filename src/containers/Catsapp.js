@@ -1,5 +1,5 @@
 import React from 'react';
-import Profile from '../components/Profile';
+import Profile from '../components/CatsProfile';
 import SelectBreed from '../components/SelectBreed';
 import './app.css';
 

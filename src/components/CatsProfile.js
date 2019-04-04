@@ -20,7 +20,7 @@ class Profile extends React.Component {
                 <h3>
                     {breed_data.breeds[0].name}
                 </h3>
-                <img className='br2 vh-25-l vh-75-m' 
+                <img className='br2 vh-25-ns vh-75-m' 
                     src={breed_data.url}
                     alt='a kitty'/>
                 <div>

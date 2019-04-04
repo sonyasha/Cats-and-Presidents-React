@@ -1,6 +1,10 @@
 import React from 'react';
 import Preslist from '../components/PresList';
 import PartiesList from '../components/PartiesList';
+import PresSearch from '../components/PresSearch';
+import photos from './photos.json';
+
+// console.log(photos['George Washington']);
 
 class Presapp extends React.Component {
     constructor() {
@@ -8,7 +12,8 @@ class Presapp extends React.Component {
         this.state = {
             presidents: [],
             parties: ['All'],
-            current_party: '',
+            current_party: [],
+            search: '',
         }
     }
 
@@ -17,6 +22,7 @@ class Presapp extends React.Component {
         .then(response => response.json())
         .then(data => data.reduce((tot, el) => {
                 const pres_el = el.terms.filter(term => term.type === 'prez');
+        
                 if (pres_el.length) {
                     const terms = pres_el.map(term_type => {
                         if (term_type.party === 'Democratic' || term_type.party === 'Democrat') {
@@ -33,11 +39,15 @@ class Presapp extends React.Component {
                                 end: term_type.end,
                                 party: party}
                         });
-
+                    
                     tot.push({
-                        firstname: el.name.first,
-                        lastname: el.name.last,
+                        firstname: el.name.middle ?
+                            el.name.first +' '+ el.name.middle +' '+ el.name.last:
+                            el.name.first +' '+ el.name.last,
                         terms: terms,
+                        photo: el.name.middle ?
+                            photos[el.name.first +' '+ el.name.middle +' '+ el.name.last]:
+                            photos[el.name.first +' '+ el.name.last],
                         key: el.id.govtrack,
                     });
                 }
@@ -48,24 +58,34 @@ class Presapp extends React.Component {
             this.setState({presidents: obj,
                             parties: this.state.parties.concat(Array.from(parties))});
         });
-    }
+    };
 
     onButtonChange = event => {
-        this.setState({current_party: event.target.value});
-    }
+        event.target.value === 'All' ? this.setState({current_party: this.state.parties}):
+        this.setState({current_party: [event.target.value]});
+    };
+
+    onSearch = event => {
+        this.setState({search: event.target.value});
+    };
 
     render() {
-        const { presidents, parties, current_party } = this.state;
-        const chosen_party = presidents.filter(el => el.terms[0].party === current_party);
+        const { presidents, parties, current_party, search } = this.state;
+        const searched_value = presidents.filter(el => 
+            el.firstname.toLowerCase().includes(search.toLowerCase()))
+            .filter(el => {
+                return current_party.length === 1?
+                    el.terms[0].party === current_party[0]: {};
+            });
         return !presidents.length ? 
                 <h1>Loading</h1>:
         (
             <div className= 'tc'>
                 <h1 className='f2 mid-gray'>Presidents</h1>
-                <PartiesList parties = {parties} onButtonChange = {this.onButtonChange}/>
-                {chosen_party.length ? (<Preslist presidents = {chosen_party}/>) :
-                (<Preslist presidents = {presidents}/>)}
-                
+                <PartiesList
+                    parties = {parties} onButtonChange = {this.onButtonChange}/>
+                <PresSearch onSearch={this.onSearch}/>                
+                <Preslist presidents = {searched_value}/>
             </div>
         )
     }

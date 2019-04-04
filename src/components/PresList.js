@@ -10,6 +10,7 @@ class Preslist extends React.Component {
                     (<Presprofile firstname = {el.firstname}
                                     lastname = {el.lastname}
                                     terms = {el.terms}
+                                    photo = {el.photo}
                                     key = {el.key}/>)
                                     )
                 }
