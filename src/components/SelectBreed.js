@@ -9,7 +9,7 @@ class SelectBreed extends React.Component {
         )
         return (
             <div className='pa1'>
-                <select className='bg-washed-blue' onChange={this.props.onChange}>
+                <select className='bg-near-white' onChange={this.props.onChange}>
                     {options}
                 </select>
             </div>

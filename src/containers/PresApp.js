@@ -2,7 +2,8 @@ import React from 'react';
 import Preslist from '../components/PresList';
 import PartiesList from '../components/PartiesList';
 import PresSearch from '../components/PresSearch';
-import photos from './photos.json';
+import Scroll from '../components/Scroll';
+import photos from './photos2.json';
 
 // console.log(photos['George Washington']);
 
@@ -46,8 +47,11 @@ class Presapp extends React.Component {
                             el.name.first +' '+ el.name.last,
                         terms: terms,
                         photo: el.name.middle ?
-                            photos[el.name.first +' '+ el.name.middle +' '+ el.name.last]:
-                            photos[el.name.first +' '+ el.name.last],
+                            photos[el.name.first +' '+ el.name.middle +' '+ el.name.last][0]:
+                            photos[el.name.first +' '+ el.name.last][0],
+                        link: el.name.middle ?
+                        photos[el.name.first +' '+ el.name.middle +' '+ el.name.last][1]:
+                        photos[el.name.first +' '+ el.name.last][1],
                         key: el.id.govtrack,
                     });
                 }
@@ -84,8 +88,10 @@ class Presapp extends React.Component {
                 <h1 className='f2 mid-gray'>Presidents</h1>
                 <PartiesList
                     parties = {parties} onButtonChange = {this.onButtonChange}/>
-                <PresSearch onSearch={this.onSearch}/>                
-                <Preslist presidents = {searched_value}/>
+                <PresSearch onSearch={this.onSearch}/>
+                <Scroll>
+                    <Preslist presidents = {searched_value}/>
+                </Scroll>                   
             </div>
         )
     }

@@ -11,6 +11,7 @@ class Preslist extends React.Component {
                                     lastname = {el.lastname}
                                     terms = {el.terms}
                                     photo = {el.photo}
+                                    link = {el.link}
                                     key = {el.key}/>)
                                     )
                 }
