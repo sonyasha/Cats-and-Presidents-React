@@ -1,3 +1,16 @@
+My first app with React [https://sonyasha.github.io/Cats-and-Presidents-React]
+
+A handbook of the presidents and cat's breeds.
+
+All the data is taken from the:
+[Wikipedia](https://en.wikipedia.org/wiki/List_of_Presidents_of_the_United_States)
+[the @unitedstates project](https://theunitedstates.io/)
+[TheCatAPI](https://thecatapi.com/)
+[CATAAS](https://cataas.com/#/)
+
+
+
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
